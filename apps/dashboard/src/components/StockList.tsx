@@ -13,7 +13,6 @@ type StockListProps = {
 
 const StockList = ({ email }: StockListProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [parent] = useAutoAnimate();
   const [stockList, setStockList] = useState<StockListType[]>([]);
   const { mutate: addStockList } = trpc.stockList.create.useMutation();
 
@@ -52,7 +51,6 @@ const StockList = ({ email }: StockListProps) => {
       )}
       <ul
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={parent as any}
         className="grid grid-cols-2 gap-4 lg:grid-cols-4 md:grid-cols-3"
       >
         <>

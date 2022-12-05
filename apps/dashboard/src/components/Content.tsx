@@ -8,7 +8,6 @@ type ContentProps = {
 
 const Content = ({ title }: ContentProps) => {
   const { data: session } = trpc.auth.getSession.useQuery();
-
   return (
     <section className="main flex w-full flex-col">
       <h2 className="text-3xl">{title}</h2>

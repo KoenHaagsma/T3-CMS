@@ -27,4 +27,18 @@ export const stockListRouter = router({
     .mutation(({ ctx, input }) => {
       return ctx.prisma.stockList.create({ data: input });
     }),
+
+  getById: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      })
+    )
+    .query(({ ctx, input }) => {
+      return ctx.prisma.stockList.findFirst({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
 });

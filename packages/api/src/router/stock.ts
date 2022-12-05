@@ -3,16 +3,16 @@ import { z } from 'zod';
 import { router, protectedProcedure } from '../trpc';
 
 export const stockRouter = router({
-  getById: protectedProcedure
+  getByStockListId: protectedProcedure
     .input(
       z.object({
-        id: z.string(),
+        stockListId: z.string(),
       })
     )
     .query(({ ctx, input }) => {
-      return ctx.prisma.stockList.findMany({
+      return ctx.prisma.stock.findMany({
         where: {
-          email: input.id,
+          stockListId: input.stockListId,
         },
       });
     }),
